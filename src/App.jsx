@@ -4,7 +4,38 @@ import { motion } from "framer-motion";
 export default function App() {
   const username = "mestachs"; // ← replace
   const [user, setUser] = useState(null);
-  const repos = [];
+  const tools = [
+    {
+      title: "PDF Toolbox",
+      desc: "Simple web tools for PDFs and images (merge and compress).",
+      url: "https://mestachs.github.io/pdf-toolbox/",
+      gradient: "from-pink-500 via-purple-500 to-indigo-500",
+    },
+    {
+      title: "Parquet Viewer",
+      desc: "Parquet viewer with export to excel, csv and parquet.",
+      url: "https://mestachs.github.io/parquet-viewer/",
+      gradient: "from-cyan-400 via-blue-500 to-indigo-500",
+    },
+    {
+      title: "Shary",
+      desc: "QR code generator to share things with your mobile.",
+      url: "https://mestachs.github.io/shary/",
+      gradient: "from-amber-400 via-orange-500 to-rose-500",
+    },
+    {
+      title: "Taskr",
+      desc: "Small notebook environnement",
+      url: "https://mestachs.github.io/taskr/#/gh/g/mestachs/c0fd9058cf5b7a02eae11e1d77ca4d09",
+      gradient: "from-cyan-400 via-blue-500 to-indigo-500",
+    },
+    {
+      title: "Superset but fully client side",
+      desc: "Proof of concept of a parquet based superset without backend.",
+      url: "https://mestachs.github.io/parquet-viewer/#/dashboard/orgunits",
+      gradient: "from-pink-500 via-purple-500 to-indigo-500",
+    },
+  ];
   useEffect(() => {
     const fetchData = async () => {
       const [u, r] = await Promise.all([
@@ -62,40 +93,15 @@ export default function App() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
         viewport={{ once: true }}
-        className="grid sm:grid-cols-2 md:grid-cols-3 gap-8"
+        className="w-full flex justify-center"
       >
         <section className="mt-20 w-full max-w-5xl gap-6">
           <h2 className="text-2xl font-semibold mb-6 text-center">
-            My Projects
+            Side Projects and everyday tools
           </h2>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "PDF Toolbox",
-                desc: "Simple web tools for PDFs (merge and compress).",
-                url: "https://mestachs.github.io/pdf-toolbox/",
-                gradient: "from-pink-500 via-purple-500 to-indigo-500",
-              },
-              {
-                title: "Parquet Viewer",
-                desc: "Parquet viewer with export to excel, csv and parquet.",
-                url: "https://mestachs.github.io/parquet-viewer/",
-                gradient: "from-pink-500 via-purple-500 to-indigo-500",                
-              },
-              {
-                title: "Shary",
-                desc: "QR code generator to share things with your mobile.",
-                url: "https://mestachs.github.io/shary/",
-                gradient: "from-amber-400 via-orange-500 to-rose-500",
-              },
-              {
-                title: "Taskr",
-                desc: "Small notebook environnement",
-                url: "https://mestachs.github.io/taskr/#/gh/g/mestachs/c0fd9058cf5b7a02eae11e1d77ca4d09",
-                gradient: "from-cyan-400 via-blue-500 to-indigo-500",
-              },
-            ].map((p) => (
+            {tools.map((p) => (
               <a
                 key={p.url}
                 href={p.url}
@@ -106,8 +112,14 @@ export default function App() {
                   bg-gradient-to-r ${p.gradient} transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.02]
                 `}
               >
-                <h3 className="font-semibold mb-1 text-lg">{p.title}</h3>
-                <p className="text-gray-400 text-sm line-clamp-2">{p.desc}</p>
+                <div className="rounded-2xl bg-gray-950 p-5 h-full flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2 text-gray-100">
+                      {p.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm">{p.desc}</p>
+                  </div>
+                </div>
               </a>
             ))}
           </div>
