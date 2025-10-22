@@ -1,6 +1,37 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+function randomGradient() {
+  const colors = [
+    "red",
+    "pink",
+    "rose",
+    "orange",
+    "amber",
+    "yellow",
+    "lime",
+    "green",
+    "emerald",
+    "teal",
+    "cyan",
+    "sky",
+    "blue",
+    "indigo",
+    "violet",
+    "purple",
+    "fuchsia",
+  ];
+
+  const shades = ["300", "400", "500", "600", "700"];
+
+  const pick = () =>
+    `${colors[Math.floor(Math.random() * colors.length)]}-${
+      shades[Math.floor(Math.random() * shades.length)]
+    }`;
+
+  return `from-${pick()} via-${pick()} to-${pick()}`;
+}
+
 export default function App() {
   const username = "mestachs"; // ← replace
   const [user, setUser] = useState(null);
@@ -9,33 +40,36 @@ export default function App() {
       title: "PDF Toolbox",
       desc: "Simple web tools for PDFs and images (merge and compress).",
       url: "https://mestachs.github.io/pdf-toolbox/",
-      gradient: "from-pink-500 via-purple-500 to-indigo-500",
     },
     {
       title: "Parquet Viewer",
       desc: "Parquet viewer with export to excel, csv and parquet.",
       url: "https://mestachs.github.io/parquet-viewer/",
-      gradient: "from-cyan-400 via-blue-500 to-indigo-500",
     },
     {
       title: "Shary",
       desc: "QR code generator to share things with your mobile.",
       url: "https://mestachs.github.io/shary/",
-      gradient: "from-amber-400 via-orange-500 to-rose-500",
     },
     {
       title: "Taskr",
       desc: "Small notebook environnement",
       url: "https://mestachs.github.io/taskr/#/gh/g/mestachs/c0fd9058cf5b7a02eae11e1d77ca4d09",
-      gradient: "from-cyan-400 via-blue-500 to-indigo-500",
     },
     {
       title: "Superset but fully client side",
       desc: "Proof of concept of a parquet based superset without backend.",
       url: "https://mestachs.github.io/parquet-viewer/#/dashboard/orgunits",
-      gradient: "from-pink-500 via-purple-500 to-indigo-500",
+    },
+    {
+      title: "Solitaire",
+      desc: "The classic card game",
+      url: "https://mestachs.github.io/besolitair/#/spider/1/easy",
     },
   ];
+  for (let tool of tools) {
+    tool.gradient = randomGradient();
+  }
   useEffect(() => {
     const fetchData = async () => {
       const [u, r] = await Promise.all([
