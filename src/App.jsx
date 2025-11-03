@@ -52,6 +52,16 @@ export default function App() {
       url: "https://mestachs.github.io/shary/",
     },
     {
+      title: "Snip",
+      desc: "A browser based screenshot app, privacy focused",
+      url: "https://mestachs.github.io/snip/",
+    },
+    {
+      title: "Xslx dependencies",
+      desc: "Turn an xlsx into a graph to reverser engineer dependencies",
+      url: "https://mestachs.github.io/dep-xlsx-js/",
+    },
+    {
       title: "Taskr",
       desc: "Small notebook environnement",
       url: "https://mestachs.github.io/taskr/#/gh/g/mestachs/c0fd9058cf5b7a02eae11e1d77ca4d09",
