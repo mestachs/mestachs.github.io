@@ -62,6 +62,11 @@ export default function App() {
       url: "https://mestachs.github.io/dep-xlsx-js/",
     },
     {
+      title: "Xslx Diff",
+      desc: "Compare two xlsx files and highlight the differences, or 2 sheets in the same file.",
+      url: "https://mestachs.github.io/diff-xlsx/",
+    },
+    {
       title: "Taskr",
       desc: "Small notebook environnement",
       url: "https://mestachs.github.io/taskr/#/gh/g/mestachs/c0fd9058cf5b7a02eae11e1d77ca4d09",
