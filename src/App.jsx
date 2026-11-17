@@ -122,6 +122,9 @@ export default function App() {
           <a href={user.html_url} className="text-blue-400 hover:underline">
             GitHub
           </a>
+          <a href="#/cv" className="text-blue-400 hover:underline">
+            CV
+          </a>
           {user.blog && (
             <a
               href={
