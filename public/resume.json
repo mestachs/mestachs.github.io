@@ -4,7 +4,7 @@
     "name": "Stéphan Mestach",
     "label": "Senior developer",
     "url": "https://mestachs.github.io",
-    "summary": "Don't Make the Same Mistake Twice. Always improve! Passionate programmer, enjoy learning new things, proactive and pragmatic, problem solver, love helping others to work better and more effectively. Convinced by code modularization, good API design, unit testing, refactoring, mocking, code coverage, continuous integration and inspection, automation, monitoring, coaching, open source.",
+    "summary": "Don't make the same mistake twice. 25 years of software, from Java insurance applications to data systems for public health. I like understanding why things break, fixing them for good, and turning the fix into a tool, a test or a runbook so it stays fixed. Pragmatic, keen to learn, happiest when helping others work better. Believe in modular code, good APIs, automated tests, continuous integration, monitoring and open source.",
     "location": {
       "city": "Namur",
       "countryCode": "BE"
@@ -43,13 +43,14 @@
       "position": "Senior developer",
       "url": "https://www.bluesquarehub.com",
       "startDate": "2016-11",
-      "summary": "Digital health and data systems for public health programs, built around DHIS2.",
+      "summary": "Nine years on data systems for public health programs. Started around DHIS2, the open-source health information system used by many ministries of health to collect and analyse their data: performance-based financing on top of it (ORBF2 / Hesabu), then running and troubleshooting around 50 DHIS2 servers. Then beyond DHIS2: IASO, Bluesquare's georegistry and data collection platform (its DHIS2 integration and performance), and lately data pipelines and lightweight apps for health campaigns on OpenHEXA, Bluesquare's data platform. Common thread: keeping these systems working as projects scale and data comes in.",
       "highlights": [
-        "Data collection: integration of ONA forms with DHIS2",
-        "ORBF2 / Hesabu: performance-based financing engine (think Excel on top of your DHIS2) and its rollout in country programs",
-        "Hosting and operations: around 50 DHIS2 instances, diagnostics, runbooks, automated reviews, local hosting",
-        "IASO: DHIS2 integration, Parquet exports, performance and diagnostics",
-        "Data and health campaigns: CPS and MILDA in Ivory Coast, pre-baked apps",
+        "Performance-based financing: ORBF2 / Hesabu rule engine (think Excel on top of your DHIS2), rolled out in Liberia, DRC, Cameroon, Ethiopia, ...",
+        "From data collection to DHIS2: ONA forms first, then IASO form mappings, org unit sync and compatibility across DHIS2 versions",
+        "Running DHIS2 in production: around 50 instances, diagnose report, runbooks, automated reviews, on-premise local hosting",
+        "Scaling with the projects: larger org unit pyramids, more entities and submissions, faster exports and mobile sync, bottlenecks found with dedicated tooling (explain_request, QueryProfiler, APM from access logs)",
+        "Watching the data coming in: monitoring submissions and imports, detecting inconsistencies, correcting at the source (configuration changes, production data fixes through scripts)",
+        "Data with DuckDB and Parquet: IASO exports, OpenHEXA campaign pipelines, \"pre-baked apps\" served from Parquet and PMTiles",
         "DHIS2 community: helping other implementers and reporting issues to the DHIS2 core team (~270 posts, 14 accepted solutions since 2019)"
       ]
     },
@@ -117,41 +118,21 @@
   ],
   "projects": [
     {
-      "name": "IASO",
+      "name": "ORBF2 / Hesabu",
       "entity": "Bluesquare",
-      "description": "Georegistry, data collection and microplanning platform.",
-      "url": "https://github.com/BLSQ/iaso",
+      "description": "Performance-based financing: rule engine for RBF scheme calculations on top of DHIS2.",
+      "url": "https://github.com/BLSQ/orbf2",
+      "highlights": [
+        "Implementation, configuration and customisation for country programs (Liberia, DRC, Cameroon, Ethiopia, ...)",
+        "orbf-rules_engine: rule engine for RBF scheme calculations (https://github.com/BLSQ/orbf-rules_engine)",
+        "go-hesabu: Go engine to solve the equations (https://github.com/BLSQ/go-hesabu)",
+        "hesabu-manager: DHIS2 app to manage Hesabu projects (https://github.com/BLSQ/hesabu-manager)"
+      ],
       "keywords": [
-        "python",
-        "django",
+        "ruby-on-rails",
+        "golang",
         "react",
-        "dhis2",
-        "duckdb",
-        "parquet"
-      ],
-      "highlights": [
-        "DHIS2 integration: mapping of form questions to DHIS2 data elements for aggregate and event exports, org unit pyramid and groups sync, compatibility across DHIS2 versions (2.38 to 2.42), redesigned mapping screen (question tree, search, filters), import/export of mappings",
-        "Parquet exports via DuckDB: submissions and org unit pyramid (groups, parent ids), zstd compression; replaced the legacy CSV/XLSX submissions export",
-        "Performance and stabilisation: N+1 query removal, indexes on large tables, faster mobile entity sync, faster exports (entities, users, submissions), org unit details, bulk imports with caching, faster test suite",
-        "Diagnostics tooling: explain_request command replaying a production API request with captured SQL, EXPLAIN plans and call stacks; QueryProfiler test helper breaking queries down by table and call site, estimating server time (RDS/S3 round trips), and locking query counts in tests to catch N+1 regressions",
-        "APM from access logs: DuckDB script parsing nginx and AWS load balancer logs, mapping paths to Django routes, reporting time per route and status, exported as Parquet for an HTML report running in the browser (DuckDB-WASM)"
-      ]
-    },
-    {
-      "name": "Data and health campaigns",
-      "entity": "Bluesquare",
-      "description": "Data pipelines, dashboards and lightweight apps for health campaigns.",
-      "highlights": [
-        "Health campaigns (CPS and MILDA, Ivory Coast): data pipelines and dashboards with OpenHEXA Python pipelines, Parquet, DuckDB and Superset",
-        "Promoted a \"pre-baked app\" pattern: OpenHEXA pipelines precompute the data as Parquet and PMTiles, served to lightweight apps (IASO apps, OpenHEXA web apps) that do most of the work in the browser, keeping the backend minimal"
-      ],
-      "keywords": [
-        "openhexa",
-        "python",
-        "duckdb",
-        "parquet",
-        "pmtiles",
-        "superset"
+        "dhis2"
       ]
     },
     {
@@ -175,21 +156,41 @@
       ]
     },
     {
-      "name": "ORBF2 / Hesabu",
+      "name": "IASO",
       "entity": "Bluesquare",
-      "description": "Performance-based financing: rule engine for RBF scheme calculations on top of DHIS2.",
-      "url": "https://github.com/BLSQ/orbf2",
+      "description": "Georegistry, data collection and microplanning platform.",
+      "url": "https://github.com/BLSQ/iaso",
+      "keywords": [
+        "python",
+        "django",
+        "react",
+        "dhis2",
+        "duckdb",
+        "parquet"
+      ],
       "highlights": [
-        "Implementation, configuration and customisation for country programs (Liberia, DRC, Cameroon, Ethiopia, ...)",
-        "orbf-rules_engine: rule engine for RBF scheme calculations (https://github.com/BLSQ/orbf-rules_engine)",
-        "go-hesabu: Go engine to solve the equations (https://github.com/BLSQ/go-hesabu)",
-        "hesabu-manager: DHIS2 app to manage Hesabu projects (https://github.com/BLSQ/hesabu-manager)"
+        "DHIS2 integration: mapping of form questions to DHIS2 data elements for aggregate and event exports, org unit pyramid and groups sync, compatibility across DHIS2 versions (2.38 to 2.42), redesigned mapping screen (question tree, search, filters), import/export of mappings",
+        "Parquet exports via DuckDB: submissions and org unit pyramid (groups, parent ids), zstd compression; replaced the legacy CSV/XLSX submissions export",
+        "Scaling to larger org unit pyramids and more entities: N+1 query removal, indexes on large tables, faster mobile entity sync, faster exports (entities, users, submissions), org unit details, bulk imports with caching, faster test suite",
+        "Diagnostics tooling: explain_request command replaying a production API request with captured SQL, EXPLAIN plans and call stacks; QueryProfiler test helper breaking queries down by table and call site, estimating server time (RDS/S3 round trips), and locking query counts in tests to catch N+1 regressions",
+        "APM from access logs: DuckDB script parsing nginx and AWS load balancer logs, mapping paths to Django routes, reporting time per route and status, exported as Parquet for an HTML report running in the browser (DuckDB-WASM)"
+      ]
+    },
+    {
+      "name": "Health campaign data (Ivory Coast)",
+      "entity": "Bluesquare",
+      "description": "Data pipelines, dashboards and lightweight apps for health campaigns.",
+      "highlights": [
+        "Health campaigns (CPS and MILDA, Ivory Coast): data pipelines and dashboards with OpenHEXA Python pipelines, Parquet, DuckDB and Superset",
+        "Promoted a \"pre-baked app\" pattern: OpenHEXA pipelines precompute the data as Parquet and PMTiles, served to lightweight apps (IASO apps, OpenHEXA web apps) that do most of the work in the browser, keeping the backend minimal"
       ],
       "keywords": [
-        "ruby-on-rails",
-        "golang",
-        "react",
-        "dhis2"
+        "openhexa",
+        "python",
+        "duckdb",
+        "parquet",
+        "pmtiles",
+        "superset"
       ]
     }
   ],
