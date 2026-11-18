@@ -47,7 +47,7 @@
       "highlights": [
         "Performance-based financing: ORBF2 / Hesabu rule engine (think Excel on top of your DHIS2), rolled out in Liberia, DRC, Cameroon, Ethiopia, ...",
         "From data collection to DHIS2: ONA forms first, then IASO form mappings, org unit sync and compatibility across DHIS2 versions",
-        "Running DHIS2 in production: around 50 instances, diagnose report, runbooks, automated reviews, on-premise local hosting",
+        "Running DHIS2 in production: around 50 instances, migrations from Linode to Heroku to AWS, diagnose report, runbooks, automated reviews, on-premise local hosting",
         "Scaling with the projects: larger org unit pyramids, more entities and submissions, faster exports and mobile sync, bottlenecks found with dedicated tooling (explain_request, QueryProfiler, APM from access logs)",
         "Watching the data coming in: monitoring submissions and imports, detecting inconsistencies, correcting at the source (configuration changes, production data fixes through scripts)",
         "Data with DuckDB and Parquet: IASO exports, OpenHEXA campaign pipelines, \"pre-baked apps\" served from Parquet and PMTiles",
@@ -120,10 +120,11 @@
     {
       "name": "ORBF2 / Hesabu",
       "entity": "Bluesquare",
-      "description": "Performance-based financing: rule engine for RBF scheme calculations on top of DHIS2.",
+      "description": "Performance-based financing: rule engine for RBF scheme calculations on top of DHIS2. Health facilities get paid on these results, so every amount has to be exact and explainable, traceable back to the formulas and the input values behind it.",
       "url": "https://github.com/BLSQ/orbf2",
       "highlights": [
-        "Implementation, configuration and customisation for country programs (Liberia, DRC, Cameroon, Ethiopia, ...)",
+        "Country programs (Liberia, DRC, Cameroon, Ethiopia, ...): every country has its own PBF variant; kept one engine for all by turning each variant into configuration and generic features rather than country-specific code, down to local specifics such as the Ethiopian calendar",
+        "Rules that change after the fact: the right information rarely comes at the right moment (a subsidy lowered or raised without notice, 20% of invoices cut after fraud was detected, ...); absorbing these late changes and recalculating while keeping every amount exact and explainable",
         "orbf-rules_engine: rule engine for RBF scheme calculations (https://github.com/BLSQ/orbf-rules_engine)",
         "go-hesabu: Go engine to solve the equations (https://github.com/BLSQ/go-hesabu)",
         "hesabu-manager: DHIS2 app to manage Hesabu projects (https://github.com/BLSQ/hesabu-manager)"
@@ -141,6 +142,7 @@
       "description": "Hosting, monitoring and troubleshooting of DHIS2 and Bluesquare products, in the cloud and on premise.",
       "highlights": [
         "DHIS2 hosting: around 50 instances, with a Slack bot for monitoring and troubleshooting",
+        "Migrations and decommissioning: moved the hosting from Linode to Heroku, then to AWS, and decommissioned the servers and apps left behind",
         "Diagnose report: one-shot HTML snapshot of a server for incident analysis (version, CPU / load, logs, running database queries, database sizes, thread stacks), extended from DHIS2 (Java) to Python apps (gunicorn thread dumps via faulthandler, where py-spy can't run)",
         "Runbooks and practices: runbooks documenting recurring tasks, rules of engagement before touching a server, archiving of large tables (audit records) to keep databases manageable",
         "Automated reviews: monthly AWS inventory snapshots and diffs, upgrade and deprecation checks (Elastic Beanstalk platforms, Docker images), access reviews (GitHub, Bitbucket, AWS users, outside collaborators), secret leak scanning (trufflehog), log review",
