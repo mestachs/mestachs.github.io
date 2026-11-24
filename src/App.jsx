@@ -118,7 +118,7 @@ export default function App() {
         />
         <h1 className="text-3xl font-bold mb-2">{user.name || user.login}</h1>
         <p className="text-gray-400 mb-4">{user.bio}</p>
-        <div className="grid gap-4">
+        <div className="flex justify-center gap-6">
           <a href={user.html_url} className="text-blue-400 hover:underline">
             GitHub
           </a>
